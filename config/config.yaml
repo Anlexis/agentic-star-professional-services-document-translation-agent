@@ -1,0 +1,18 @@
+# Runtime parameters — loaded by AgentRegistry, passed as Graph(config=...).
+# Separate from config/agent.yaml (the static manifest).
+
+max_retry: 3
+timeout_s: 30
+
+# Language-detection tuning, forwarded to the inner workflow graph.
+# cjk_threshold: fraction of CJK characters (0..1) at or above which a document
+# is detected as Japanese. Validated in src/graph/graph.py declared_settings();
+# an out-of-contract value falls back to the built-in floor (0.05).
+detection:
+  cjk_threshold: 0.05
+
+# Caller-glossary bounds, consumed by the input-validation node.
+# max_caller_glossary_terms: entry cap on the glossary_terms mapping a caller
+# may submit on the structured channel (0 disables the channel).
+translation:
+  max_caller_glossary_terms: 20
